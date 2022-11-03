@@ -48,12 +48,13 @@ function Form() {
 			<div className='result'>
 				{data
 					.slice(0, 12)
+					// eslint-disable-next-line array-callback-return
 					.sort((a, b) => {
-					return (if (sortGoodBad === 'goodToBad') {
+						if (sortGoodBad === 'goodToBad') {
 							return b.vote_average - a.vote_average;
 						} else if (sortGoodBad === 'badToGood') {
 							return a.vote_average - b.vote_average;
-						})
+						}
 					})
 					.map((movie) => (
 						<Card movie={movie} key={movie.id} />
